@@ -123,7 +123,6 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                 ),
                 InkWell(
                   onTap: () async {
-                    AuthService().signOut();
                     //  Get.offAllNamed(rootRoute);
                     // if (_formKey.currentState.validate()) {
                     //   setState(() {

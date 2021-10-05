@@ -13,12 +13,8 @@ class RevenueInfo extends StatelessWidget {
       child: RichText(
           textAlign: TextAlign.center,
           text: TextSpan(children: [
-            TextSpan(
-                text: "$title \n\n",
-                style: TextStyle(color: lightGrey, fontSize: 16)),
-            TextSpan(
-                text: "\$ $amount",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            TextSpan(text: "$title \n\n", style: TextStyle(color: lightGrey, fontSize: 16)),
+            TextSpan(text: "\$ $amount", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           ])),
     );
   }

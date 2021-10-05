@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class Admin {
   String name;
   String email;

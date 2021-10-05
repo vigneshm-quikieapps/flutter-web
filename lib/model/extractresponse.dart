@@ -14,14 +14,14 @@ class ExtractResponse {
   List<Datum> data;
 
   factory ExtractResponse.fromJson(Map<String, dynamic> json) => ExtractResponse(
-    status: Status.fromJson(json["status"]),
-    data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
-  );
+        status: Status.fromJson(json["status"]),
+        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "status": status.toJson(),
-    "data": List<dynamic>.from(data.map((x) => x.toJson())),
-  };
+        "status": status.toJson(),
+        "data": List<dynamic>.from(data.map((x) => x.toJson())),
+      };
 }
 
 class Datum {
@@ -48,28 +48,28 @@ class Datum {
   Platform platform;
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-    id: json["id"],
-    name: json["name"],
-    symbol: json["symbol"],
-    slug: json["slug"],
-    rank: json["rank"],
-    isActive: json["is_active"],
-    firstHistoricalData: DateTime.parse(json["first_historical_data"]),
-    lastHistoricalData: DateTime.parse(json["last_historical_data"]),
-    platform: json["platform"] == null ? null : Platform.fromJson(json["platform"]),
-  );
+        id: json["id"],
+        name: json["name"],
+        symbol: json["symbol"],
+        slug: json["slug"],
+        rank: json["rank"],
+        isActive: json["is_active"],
+        firstHistoricalData: DateTime.parse(json["first_historical_data"]),
+        lastHistoricalData: DateTime.parse(json["last_historical_data"]),
+        platform: json["platform"] == null ? null : Platform.fromJson(json["platform"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "symbol": symbol,
-    "slug": slug,
-    "rank": rank,
-    "is_active": isActive,
-    "first_historical_data": firstHistoricalData.toIso8601String(),
-    "last_historical_data": lastHistoricalData.toIso8601String(),
-    "platform": platform == null ? null : platform.toJson(),
-  };
+        "id": id,
+        "name": name,
+        "symbol": symbol,
+        "slug": slug,
+        "rank": rank,
+        "is_active": isActive,
+        "first_historical_data": firstHistoricalData.toIso8601String(),
+        "last_historical_data": lastHistoricalData.toIso8601String(),
+        "platform": platform == null ? null : platform.toJson(),
+      };
 }
 
 class Platform {
@@ -88,23 +88,47 @@ class Platform {
   String tokenAddress;
 
   factory Platform.fromJson(Map<String, dynamic> json) => Platform(
-    id: json["id"],
-    name: nameValues.map[json["name"]],
-    symbol: symbolValues.map[json["symbol"]],
-    slug: slugValues.map[json["slug"]],
-    tokenAddress: json["token_address"],
-  );
+        id: json["id"],
+        name: nameValues.map[json["name"]],
+        symbol: symbolValues.map[json["symbol"]],
+        slug: slugValues.map[json["slug"]],
+        tokenAddress: json["token_address"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": nameValues.reverse[name],
-    "symbol": symbolValues.reverse[symbol],
-    "slug": slugValues.reverse[slug],
-    "token_address": tokenAddress,
-  };
+        "id": id,
+        "name": nameValues.reverse[name],
+        "symbol": symbolValues.reverse[symbol],
+        "slug": slugValues.reverse[slug],
+        "token_address": tokenAddress,
+      };
 }
 
-enum Name { ETHEREUM, EOS, NEO, BINANCE_CHAIN, BINANCE_SMART_CHAIN, KLAYTN, TRON, STELLAR, CHILIZ, FANTOM, CELO, XDAI_CHAIN, AVALANCHE, SOLANA, HECO, AVALANCHE_CONTRACT_CHAIN, WANCHAIN, IOST, POLYGON, WAVES, CARDANO, KCC, TOMO_CHAIN }
+enum Name {
+  ETHEREUM,
+  EOS,
+  NEO,
+  BINANCE_CHAIN,
+  BINANCE_SMART_CHAIN,
+  KLAYTN,
+  TRON,
+  STELLAR,
+  CHILIZ,
+  FANTOM,
+  CELO,
+  XDAI_CHAIN,
+  AVALANCHE,
+  SOLANA,
+  HECO,
+  AVALANCHE_CONTRACT_CHAIN,
+  WANCHAIN,
+  IOST,
+  POLYGON,
+  WAVES,
+  CARDANO,
+  KCC,
+  TOMO_CHAIN
+}
 
 final nameValues = EnumValues({
   "Avalanche": Name.AVALANCHE,
@@ -132,7 +156,29 @@ final nameValues = EnumValues({
   "Xdai chain": Name.XDAI_CHAIN
 });
 
-enum Slug { ETHEREUM, EOS, NEO, BINANCE_COIN, KLAYTN, TRON, STELLAR, CHILIZ, FANTOM, CELO, XDAI, AVALANCHE, SOLANA, HUOBI_TOKEN, WANCHAIN, IOSTOKEN, POLYGON, WAVES, CARDANO, KUCOIN_TOKEN, TOMOCHAIN }
+enum Slug {
+  ETHEREUM,
+  EOS,
+  NEO,
+  BINANCE_COIN,
+  KLAYTN,
+  TRON,
+  STELLAR,
+  CHILIZ,
+  FANTOM,
+  CELO,
+  XDAI,
+  AVALANCHE,
+  SOLANA,
+  HUOBI_TOKEN,
+  WANCHAIN,
+  IOSTOKEN,
+  POLYGON,
+  WAVES,
+  CARDANO,
+  KUCOIN_TOKEN,
+  TOMOCHAIN
+}
 
 final slugValues = EnumValues({
   "avalanche": Slug.AVALANCHE,
@@ -158,7 +204,29 @@ final slugValues = EnumValues({
   "xdai": Slug.XDAI
 });
 
-enum Symbol { ETH, EOS, NEO, BNB, KLAY, TRX, XLM, CHZ, FTM, CELO, STAKE, AVAX, SOL, HT, WAN, IOST, MATIC, WAVES, ADA, KCS, TOMO }
+enum Symbol {
+  ETH,
+  EOS,
+  NEO,
+  BNB,
+  KLAY,
+  TRX,
+  XLM,
+  CHZ,
+  FTM,
+  CELO,
+  STAKE,
+  AVAX,
+  SOL,
+  HT,
+  WAN,
+  IOST,
+  MATIC,
+  WAVES,
+  ADA,
+  KCS,
+  TOMO
+}
 
 final symbolValues = EnumValues({
   "ADA": Symbol.ADA,
@@ -202,22 +270,22 @@ class Status {
   dynamic notice;
 
   factory Status.fromJson(Map<String, dynamic> json) => Status(
-    timestamp: DateTime.parse(json["timestamp"]),
-    errorCode: json["error_code"],
-    errorMessage: json["error_message"],
-    elapsed: json["elapsed"],
-    creditCount: json["credit_count"],
-    notice: json["notice"],
-  );
+        timestamp: DateTime.parse(json["timestamp"]),
+        errorCode: json["error_code"],
+        errorMessage: json["error_message"],
+        elapsed: json["elapsed"],
+        creditCount: json["credit_count"],
+        notice: json["notice"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "timestamp": timestamp.toIso8601String(),
-    "error_code": errorCode,
-    "error_message": errorMessage,
-    "elapsed": elapsed,
-    "credit_count": creditCount,
-    "notice": notice,
-  };
+        "timestamp": timestamp.toIso8601String(),
+        "error_code": errorCode,
+        "error_message": errorMessage,
+        "elapsed": elapsed,
+        "credit_count": creditCount,
+        "notice": notice,
+      };
 }
 
 class EnumValues<T> {

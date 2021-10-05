@@ -25,9 +25,7 @@ class AuthService {
 
   //Sign in
   signIn(email, password) {
-    FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email, password: password)
-        .then((user) {
+    FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password).then((user) {
       print('Signed in');
     }).catchError((e) {
       print(e);

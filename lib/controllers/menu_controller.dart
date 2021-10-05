@@ -14,7 +14,7 @@ class MenuController extends GetxController {
   }
 
   onHover(String itemName) {
-    if (!isActive(itemName)) hoverItem.value = itemName;
+    if (!isActive(itemName)) hoverItem.value = itemName ;
   }
 
   isHovering(String itemName) => hoverItem.value == itemName;

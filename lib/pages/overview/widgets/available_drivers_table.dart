@@ -12,12 +12,7 @@ class AvailableDriversTable extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: active.withOpacity(.4), width: .5),
-        boxShadow: [
-          BoxShadow(
-              offset: Offset(0, 6),
-              color: lightGrey.withOpacity(.1),
-              blurRadius: 12)
-        ],
+        boxShadow: [BoxShadow(offset: Offset(0, 6), color: lightGrey.withOpacity(.1), blurRadius: 12)],
         borderRadius: BorderRadius.circular(8),
       ),
       padding: const EdgeInsets.all(16),
@@ -83,8 +78,7 @@ class AvailableDriversTable extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                               border: Border.all(color: active, width: .5),
                             ),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 6),
+                            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                             child: CustomText(
                               text: "Assign Delivery",
                               color: active.withOpacity(.7),

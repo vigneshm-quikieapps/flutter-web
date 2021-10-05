@@ -40,14 +40,15 @@ class _DriversTableState extends State<DriversTable> {
 //     throw Exception('Failed to load album');
 //   }
 // }
-   @override
+  @override
   void initState() {
-   // fetchCoinInfo();
+    // fetchCoinInfo();
     super.initState();
     // setState(() {
     //   _futureResponse = fetchCoinInfo();
     // });
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
