@@ -1,4 +1,5 @@
 // import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
 import 'package:flutter_web_dashboard/controllers/menu_controller.dart';
@@ -23,27 +24,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        initialRoute: authenticationPageRoute,
-        unknownRoute: GetPage(name: '/not-found', page: () => PageNotFound(), transition: Transition.fadeIn),
-        getPages: [
-        GetPage(name: rootRoute, page: () {
-          return SiteLayout();
-        }),
+      initialRoute: authenticationPageRoute,
+      unknownRoute: GetPage(name: '/not-found', page: () => PageNotFound(), transition: Transition.fadeIn),
+      getPages: [
+        GetPage(
+            name: rootRoute,
+            page: () {
+              return SiteLayout();
+            }),
         GetPage(name: authenticationPageRoute, page: () => AuthenticationPage()),
       ],
       debugShowCheckedModeBanner: false,
       title: 'Dashboard',
       theme: ThemeData(
         scaffoldBackgroundColor: light,
-        textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme).apply(
-          bodyColor: Colors.black
-        ),
-            pageTransitionsTheme: PageTransitionsTheme(
-      builders: {
-        TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
-        TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
-      }
-    ),
+        textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme).apply(bodyColor: Colors.black),
+        pageTransitionsTheme: PageTransitionsTheme(builders: {
+          TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
+          TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+        }),
         primarySwatch: Colors.blue,
       ),
       // home: AuthenticationPage(),

@@ -8,28 +8,21 @@ import 'custom_text.dart';
 class VertticalMenuItem extends StatelessWidget {
   final String itemName;
   final Function onTap;
-  const VertticalMenuItem({Key key, this.itemName, this.onTap})
-      : super(key: key);
+  const VertticalMenuItem({Key key, this.itemName, this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     return InkWell(
         onTap: onTap,
         onHover: (value) {
-          value
-              ? menuController.onHover(itemName)
-              : menuController.onHover("not hovering");
+          value ? menuController.onHover(itemName) : menuController.onHover("not hovering");
         },
         child: Obx(() => Container(
-              color: menuController.isHovering(itemName)
-                  ? lightGrey.withOpacity(.1)
-                  : Colors.transparent,
+              color: menuController.isHovering(itemName) ? lightGrey.withOpacity(.1) : Colors.transparent,
               child: Row(
                 children: [
                   Visibility(
-                    visible: menuController.isHovering(itemName) ||
-                        menuController.isActive(itemName),
+                    visible: menuController.isHovering(itemName) || menuController.isActive(itemName),
                     maintainSize: true,
                     maintainAnimation: true,
                     maintainState: true,
@@ -52,9 +45,7 @@ class VertticalMenuItem extends StatelessWidget {
                             Flexible(
                                 child: CustomText(
                               text: itemName,
-                              color: menuController.isHovering(itemName)
-                                  ? Colors.white
-                                  : lightGrey,
+                              color: menuController.isHovering(itemName) ? Colors.white : lightGrey,
                             ))
                           else
                             Flexible(
@@ -69,7 +60,7 @@ class VertticalMenuItem extends StatelessWidget {
                     ),
                   ),
                 ],
-              ),
+              ), 
             )));
   }
 }

@@ -15,7 +15,7 @@ class PageNotFound extends StatelessWidget {
             children: [
               CustomText(text: "Page not found", size: 24, weight: FontWeight.bold,),
             ],
-          )
+          ),
         ],
       ),
     );
