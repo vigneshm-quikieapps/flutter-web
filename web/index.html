@@ -30,6 +30,27 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-analytics.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-auth.js";
+    import {  } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-storage.js";
+
+    var firebaseConfig = {
+      apiKey: "AIzaSyDw1bVvQ-aGBS7BfePynasnlOMJHIYcrRI",
+      authDomain: "flutterdashboardweb.firebaseapp.com",
+      databaseURL: "https://flutterdashboardweb-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "flutterdashboardweb",
+      storageBucket: "flutterdashboardweb.appspot.com",
+      messagingSenderId: "370473926837",
+      appId: "1:370473926837:web:41992e33db8236a73ffefc",
+      measurementId: "G-E4XC7J22HM"
+  };
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
   <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {

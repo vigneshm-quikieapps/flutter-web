@@ -1,4 +1,5 @@
 // import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
 import 'package:flutter_web_dashboard/routing/routes.dart';
@@ -15,7 +16,7 @@ class AuthenticationPage extends StatefulWidget {
 }
 
 class _AuthenticationPageState extends State<AuthenticationPage> {
-  // final _auth = AuthServices();
+  final _auth = AuthService();
   bool isVisible = false;
   bool isLoading = false;
 
@@ -23,6 +24,26 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
   final TextEditingController _passwordController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+   String email, password;
+
+  checkFields() {
+    final form = _formKey.currentState;
+    if (form.validate()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  String validateEmail(String value) {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    if (!regex.hasMatch(value))
+      return 'Enter Valid Email';
+    else
+      return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,26 +123,16 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                 ),
                 InkWell(
                   onTap: () async {
-                     Get.offAllNamed(rootRoute);
+                    AuthService().signOut();
+                    //  Get.offAllNamed(rootRoute);
                     // if (_formKey.currentState.validate()) {
                     //   setState(() {
                     //     isLoading = true;
                     //   });
                     //   try {
-                    //     final user = await _auth.validateAdmin(
-                    //         _emailController.text.trim().toLowerCase(), _passwordController.text.trim());
-
-                    //     if (user != null) {
-                    //       // SharedPreferences prefs =
-                    //       //     await SharedPreferences.getInstance();
-                    //       // prefs.setString('userId', user.userId);
-                    //       Get.offAllNamed(rootRoute);
-                    //     } else if (user == null) {
                     //       UserCredential admin = await _auth.signInWithEmailAndPassword(
                     //           _emailController.text.trim(), _passwordController.text.trim());
-                    //       final superAdmin = await _auth.fetchAdmin(admin.user.uid);
-                    //       Get.offAllNamed(rootRoute);
-                    //     }
+                    //      // Get.offAllNamed(rootRoute);
                     //   } catch (e) {} finally {
                     //     setState(() {
                     //       isLoading = false;

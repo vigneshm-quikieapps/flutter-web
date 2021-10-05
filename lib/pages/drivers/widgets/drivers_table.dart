@@ -17,32 +17,32 @@ class DriversTable extends StatefulWidget {
 
 class _DriversTableState extends State<DriversTable> {
   // Future<ExtractResponse> _futureResponse;
-  fetchCoinInfo() async {
-  final response = await http.get(
-    Uri.parse('https://pro-api.coinmarketcap.com/v1/cryptocurrency/map'),
-    headers: <String, String>{
-      'X-CMC_PRO_API_KEY': '2592e201-7cb0-41b4-81d5-abacc60ac4ee',
-      "Accept": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    },
-  );
-  print(response);
-  if (response.statusCode == 200) {
-    var v = json.decode(response.body);
-    print(v);
-    print('jaanu ${response.body}');
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-   // return ExtractResponse.fromJson(jsonDecode(response.body));
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to load album');
-  }
-}
+//   fetchCoinInfo() async {
+//   final response = await http.get(
+//     Uri.parse('https://pro-api.coinmarketcap.com/v1/cryptocurrency/map'),
+//     headers: <String, String>{
+//       'X-CMC_PRO_API_KEY': '2592e201-7cb0-41b4-81d5-abacc60ac4ee',
+//       "Accept": "application/json",
+//       "Access-Control-Allow-Origin": "*",
+//     },
+//   );
+//   print(response.statusCode);
+//   if (response.statusCode == 200) {
+//     var v = json.decode(response.body);
+//     print(v);
+//     print('jaanu ${response.body}');
+//     // If the server did return a 200 OK response,
+//     // then parse the JSON.
+//    // return ExtractResponse.fromJson(jsonDecode(response.body));
+//   } else {
+//     // If the server did not return a 200 OK response,
+//     // then throw an exception.
+//     throw Exception('Failed to load album');
+//   }
+// }
    @override
   void initState() {
-    fetchCoinInfo();
+   // fetchCoinInfo();
     super.initState();
     // setState(() {
     //   _futureResponse = fetchCoinInfo();
