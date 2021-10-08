@@ -2,11 +2,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
+import 'package:flutter_web_dashboard/controllers/google_signin.dart';
 import 'package:flutter_web_dashboard/routing/routes.dart';
 import 'package:flutter_web_dashboard/services/auth_services.dart';
 import 'package:flutter_web_dashboard/widgets/custom_text.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 // class AuthenticationPage extends StatelessWidget {
 //   const AuthenticationPage({Key key}) : super(key: key);
@@ -16,7 +18,8 @@ class AuthenticationPage extends StatefulWidget {
 }
 
 class _AuthenticationPageState extends State<AuthenticationPage> {
-  final _auth = AuthService();
+  // final _auth = AuthService();
+  
   bool isVisible = false;
   bool isLoading = false;
 
@@ -25,6 +28,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
 
   final _formKey = GlobalKey<FormState>();
    String email, password;
+  
 
   checkFields() {
     final form = _formKey.currentState;
@@ -47,6 +51,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
 
   @override
   Widget build(BuildContext context) {
+     final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       body: Form(
         key: _formKey,
@@ -82,8 +87,8 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                   height: 15,
                 ),
                 TextFormField(
-                  validator: (value) => _emailController.text.isEmpty ? "Please enter your email !!" : null,
-                  controller: _emailController,
+                 // validator: (value) => _emailController.text.isEmpty ? "Please enter your email !!" : null,
+                  controller: authProvider.email,
                   decoration: InputDecoration(
                       labelText: "Email",
                       hintText: "abc@domain.com",
@@ -93,8 +98,8 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                   height: 15,
                 ),
                 TextFormField(
-                  validator: (value) => _passwordController.text.isEmpty ? "Please enter your password !!" : null,
-                  controller: _passwordController,
+                 // validator: (value) => _passwordController.text.isEmpty ? "Please enter your password !!" : null,
+                  controller: authProvider.password,
                   obscureText: true,
                   decoration: InputDecoration(
                       labelText: "Password",
@@ -123,15 +128,22 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                 ),
                 InkWell(
                   onTap: () async {
-                    //  Get.offAllNamed(rootRoute);
-                    // if (_formKey.currentState.validate()) {
-                    //   setState(() {
-                    //     isLoading = true;
-                    //   });
-                    //   try {
-                    //       UserCredential admin = await _auth.signInWithEmailAndPassword(
-                    //           _emailController.text.trim(), _passwordController.text.trim());
-                    //      // Get.offAllNamed(rootRoute);
+                  //   if (_formKey.currentState.validate()) {
+                  //     setState(() {
+                  //       isLoading = true;
+                  //     });
+                  //     try {
+                  //        if(!await authProvider.signIn()){
+                  //   ScaffoldMessenger.of(context).showSnackBar(
+                  //     SnackBar(content: Text("Login failed!"))
+
+                  //   );
+                  //   return;
+                  // }
+                  // authProvider.clearController();
+
+                      Get.offAllNamed(rootRoute);
+                        
                     //   } catch (e) {} finally {
                     //     setState(() {
                     //       isLoading = false;
