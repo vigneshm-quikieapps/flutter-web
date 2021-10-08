@@ -30,26 +30,32 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-analytics.js";
-    import { getAuth } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-auth.js";
-    import {  } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-storage.js";
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
 
-    var firebaseConfig = {
-      apiKey: "AIzaSyDw1bVvQ-aGBS7BfePynasnlOMJHIYcrRI",
-      authDomain: "flutterdashboardweb.firebaseapp.com",
-      databaseURL: "https://flutterdashboardweb-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "flutterdashboardweb",
-      storageBucket: "flutterdashboardweb.appspot.com",
-      messagingSenderId: "370473926837",
-      appId: "1:370473926837:web:41992e33db8236a73ffefc",
-      measurementId: "G-E4XC7J22HM"
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+
+  <script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBeoGyKxT4M5zWyk4fjAWUafXdY0PUtVkQ",
+    authDomain: "flutter-ecommerce-992d6.firebaseapp.com",
+    databaseURL: "https://flutter-ecommerce-992d6.firebaseio.com",
+    projectId: "flutter-ecommerce-992d6",
+    storageBucket: "flutter-ecommerce-992d6.appspot.com",
+    messagingSenderId: "988325157516",
+    appId: "1:988325157516:web:86dd6010c88585e68e79a9",
+    measurementId: "G-R1TNTXXT45"
   };
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
   <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {

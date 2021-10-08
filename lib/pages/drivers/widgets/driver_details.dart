@@ -2,38 +2,40 @@ import 'dart:convert';
 
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
-import 'package:flutter_web_dashboard/model/extractresponse.dart';
 import 'package:flutter_web_dashboard/pages/drivers/driver_details.dart';
-import 'package:flutter_web_dashboard/pages/drivers/widgets/driver_details.dart';
-import 'package:flutter_web_dashboard/services/fetchservices.dart';
 import 'package:flutter_web_dashboard/widgets/custom_text.dart';
 import 'package:http/http.dart' as http;
 
-/// Example without datasource
-class DriversTable extends StatefulWidget {
+
+class DriverDetails extends StatefulWidget {
+  final String id;
+  // ignore: non_constant_identifier_names
+  DriverDetails({
+    this.id
+  });
+
   @override
-  _DriversTableState createState() => _DriversTableState();
+  _DriverDetailsState createState() => _DriverDetailsState();
 }
 
-class _DriversTableState extends State<DriversTable> {
-  List<dynamic> leaguelist = [];
+class _DriverDetailsState extends State<DriverDetails> {
+ List<dynamic> teamslist = [];
   bool _progressVisible = false;
 
-  fetchCoinInfo() async {
+  fetchLeagueDetails() async {
     setState(() {
       _progressVisible = true;
     });
     try {
       final response = await http.get(
-        Uri.parse('https://www.thesportsdb.com/api/v1/json/1/all_leagues.php'),
+        Uri.parse('https://www.thesportsdb.com/api/v1/json/1/lookup_all_teams.php?id=${widget.id}'),
       );
       print(response.statusCode);
       if (response.statusCode == 200) {
-        var v = json.decode(response.body);
+        var data = json.decode(response.body);
         setState(() {
-          leaguelist = v['leagues'];
+          teamslist = data['teams'];
         });
       } else {
         throw Exception('Failed to load album');
@@ -48,9 +50,10 @@ class _DriversTableState extends State<DriversTable> {
 
   @override
   void initState() {
-    fetchCoinInfo();
+    fetchLeagueDetails();
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -80,24 +83,34 @@ class _DriversTableState extends State<DriversTable> {
                 minWidth: 600,
                 columns: [
                   DataColumn2(
-                    label: Text("Sport"),
+                    label: Text("Name"),
                     size: ColumnSize.L,
                   ),
                   DataColumn(
-                    label: Text('Leagues'),
+                    label: Text('Team Name'),
                   ),
                   DataColumn(
-                    label: Text('Rating'),
+                    label: Text('Formed Year'),
                   ),
                   DataColumn(
-                    label: Text('Details'),
+                    label: Text('League 1'),
+                  ),
+                  DataColumn(
+                    label: Text('League 2'),
                   ),
                 ],
                 rows: List<DataRow>.generate(
-                    leaguelist.length,
+                    teamslist.length,
                     (index) => DataRow(cells: [
-                          DataCell(CustomText(text:leaguelist[index]['strSport'])),
-                          DataCell(CustomText(text: leaguelist[index]['strLeague'])),
+                          DataCell(Container(
+                            height: 100,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100)
+                            ),
+                            child: Image.network(teamslist[index]['strTeamLogo']??''),
+                          )),
+                          DataCell(CustomText(text: teamslist[index]['strTeam']??'null')),
                           DataCell(Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -110,30 +123,12 @@ class _DriversTableState extends State<DriversTable> {
                                 width: 5,
                               ),
                               CustomText(
-                                text: "4.5",
+                                text:  teamslist[index]['intFormedYear']??'null',
                               )
                             ],
                           )),
-                          DataCell(
-                            InkWell(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>DriversDetailsPage(
-                                  id: leaguelist[index]['idLeague'],
-                                )));
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: light,
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(color: active, width: .5),
-                                ),
-                                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                                child: CustomText(
-                                  text: "Info",
-                                  color: active.withOpacity(.7),
-                                  weight: FontWeight.bold,
-                                )),
-                            )),
+                          DataCell(CustomText(text: teamslist[index]['strLeague2']??'null')),
+                          DataCell(CustomText(text: teamslist[index]['strLeague3']??'nul ')),
                         ]))),
           );
   }

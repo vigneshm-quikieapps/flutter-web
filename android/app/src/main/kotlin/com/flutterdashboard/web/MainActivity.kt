@@ -1,4 +1,4 @@
-package flutterDashboardweb
+package com.flutterdashboard.web
 
 import io.flutter.embedding.android.FlutterActivity
 
